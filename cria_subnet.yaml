@@ -1,0 +1,21 @@
+- name: Cria Subnet no cisco ACI
+  hosts: localhost
+  tasks:
+  - name: "Criando subnet {{ subnet_name }}"
+    cisco.aci.aci_bd_subnet:
+      host: "{{ cisco_aci_endpoint }}"
+      use_ssl: true
+      username: "{{ cisco_aci_username }}"
+      password: "{{ cisco_aci_password }}"
+      tenant: "{{ tenant_name }}"
+      validate_certs: false
+      bd: "{{ bd_name }}"
+      subnet_name: "{{ subnet_name }}"
+      gateway: "{{ subnet_gateway }}"
+      mask: "{{ subnet_mask }}"
+      description: "Subnet OpenShift"
+      scope: private
+#      route_profile_l3_out: corp
+#      route_profile: corp_route_profile
+      state: present
+    delegate_to: localhost

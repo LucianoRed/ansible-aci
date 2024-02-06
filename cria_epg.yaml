@@ -1,16 +1,20 @@
-- name: Cria AP no cisco ACI
+- name: Cria novo EPG
   hosts: localhost
   tasks:
-  - name: "Adicionando novo Application Profile {{ ap_name }}"
-    cisco.aci.aci_ap:
+  - name: "Adiciona novo EPG {{ epg_name }}"
+    cisco.aci.aci_epg:
       host: "{{ cisco_aci_endpoint }}"
       use_ssl: true
       username: "{{ cisco_aci_username }}"
       password: "{{ cisco_aci_password }}"
       tenant: "{{ tenant_name }}"
-      ap: "{{ ap_name}}"
-      description: "{{ ap_description }}"
+      ap: "{{ ap_name }}"
+      epg: "{{ epg_name }}"
+      priority: "level3"
       validate_certs: false
+      description: "Openshift Demo EPG"
+      bd: "{{ bd_name }}"
       monitoring_policy: default
+      preferred_group: false
       state: present
     delegate_to: localhost

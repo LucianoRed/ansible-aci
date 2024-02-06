@@ -1,0 +1,21 @@
+- name: Cria BD no cisco ACI
+  hosts: localhost
+  tasks:
+  - name: "Adicionando Bridge Domain {{ bd_name }}"
+    cisco.aci.aci_bd:
+      host: "{{ cisco_aci_endpoint }}"
+      use_ssl: true
+      username: "{{ cisco_aci_username }}"
+      password: "{{ cisco_aci_password }}"
+      tenant: "{{ tenant_name }}"
+      validate_certs: false
+      bd: "{{ bd_name }}"
+      vrf: "{{ vrf_name }}"
+      l2_unknown_unicast: "flood"
+      l3_unknown_multicast: "flood"
+      limit_ip_learn: true
+      multi_dest: "bd-flood"
+      ipv6_l3_unknown_multicast: "flood"
+      arp_flooding: true
+      state: present
+    delegate_to: localhost
