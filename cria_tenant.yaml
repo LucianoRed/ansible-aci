@@ -4,6 +4,7 @@
   - name: Adiciona um novo tenant
     cisco.aci.aci_tenant:
       host: "{{ cisco_aci_endpoint }}"
+      use_ssl: true
       username: "{{ username }}"
       password: "{{ password }}"
       tenant: "{{ tenant }}"
