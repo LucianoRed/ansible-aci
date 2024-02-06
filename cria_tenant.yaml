@@ -5,9 +5,9 @@
     cisco.aci.aci_tenant:
       host: "{{ cisco_aci_endpoint }}"
       use_ssl: true
-      username: "{{ username }}"
-      password: "{{ password }}"
-      tenant: "{{ tenant }}"
+      username: "{{ cisco_aci_username }}"
+      password: "{{ cisco_aci_password }}"
+      tenant: "{{ tenant_name }}"
       validate_certs: false
-      description: "Demo Tenant"
-      state: present
+      description: "{{ tenant_description }}"
+      state: "{{ tenant_state }}"
