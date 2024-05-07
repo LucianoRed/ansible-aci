@@ -5,6 +5,8 @@
     community.vmware.vmware_guest:
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
+      use_ssl: true
+      validate_certs: false
       password: "{{ vcenter_password }}"
       folder: /Compute/Openshift
       name: dhcp-server-1
