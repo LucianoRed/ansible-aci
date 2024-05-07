@@ -36,7 +36,14 @@
         boot_firmware: "efi"
       networks:
       - name: "{{ vmware_network }}"
+        ip: 192.168.1.100
+        netmask: 255.255.255.0
+        gateway: 192.168.1.1
         mac: aa:bb:dd:aa:00:14
+        domain: my_domain
+        dns_servers:
+        - 192.168.1.1
+        - 192.168.1.2
       wait_for_ip_address: true
     delegate_to: localhost
     register: deploy
