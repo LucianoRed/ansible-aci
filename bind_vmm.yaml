@@ -1,0 +1,16 @@
+- name: Bind VMM to EPG
+  hosts: localhost
+  tasks:
+  - name: "Bind VMM to EPG"
+    cisco.aci.aci_epg_to_domain:
+      host: "{{ cisco_aci_endpoint }}"
+      use_ssl: true
+      username: "{{ cisco_aci_username }}"
+      password: "{{ cisco_aci_password }}"
+      tenant: "{{ tenant_name }}"
+      ap: "{{ ap_name }}"
+      epg: "{{ epg_name }}"
+      domain: "{{ domain_name }}"
+      domain_type: vmm
+      state: present
+    delegate_to: localhost
