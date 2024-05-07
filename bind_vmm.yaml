@@ -9,6 +9,7 @@
       password: "{{ cisco_aci_password }}"
       tenant: "{{ tenant_name }}"
       validate_certs: false
+      deploy_immediacy: "immediate"
       ap: "{{ ap_name }}"
       epg: "{{ epg_name }}"
       domain: "{{ domain_name }}"
