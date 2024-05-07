@@ -9,7 +9,7 @@
       password: "{{ cisco_aci_password }}"
       tenant: "{{ tenant_name }}"
       vrf: "{{ vrf_name }}"
-      cdescr: "{{ vrf_description }}"
+      descr: "{{ vrf_description }}"
       policy_control_preference: enforced
       policy_control_direction: ingress
       state: present
