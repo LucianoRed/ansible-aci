@@ -12,5 +12,6 @@
       epg: "{{ epg_name }}"
       domain: "{{ domain_name }}"
       domain_type: vmm
+      vm_provider: vmware
       state: present
     delegate_to: localhost
