@@ -1,0 +1,16 @@
+- name: Cria VRF no cisco ACI
+  hosts: localhost
+  tasks:
+  - name: "Adicionando nova VRF {{ vrf_name }}"
+    cisco.aci.aci_vrf:
+      host: "{{ cisco_aci_endpoint }}"
+      use_ssl: true
+      username: "{{ cisco_aci_username }}"
+      password: "{{ cisco_aci_password }}"
+      tenant: "{{ tenant_name }}"
+      vrf: "{{ vrf_name }}"
+      cdescr: "{{ vrf_description }}"
+      policy_control_preference: enforced
+      policy_control_direction: ingress
+      state: present
+    delegate_to: localhost
