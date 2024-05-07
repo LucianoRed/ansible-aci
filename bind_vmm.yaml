@@ -8,6 +8,7 @@
       username: "{{ cisco_aci_username }}"
       password: "{{ cisco_aci_password }}"
       tenant: "{{ tenant_name }}"
+      validate_certs: false
       ap: "{{ ap_name }}"
       epg: "{{ epg_name }}"
       domain: "{{ domain_name }}"
