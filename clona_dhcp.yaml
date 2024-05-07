@@ -1,4 +1,5 @@
 - name: Clona DHCP Server
+  hosts: localhost
   tasks: 
   - name: Create a virtual machine from a template
     community.vmware.vmware_guest:
