@@ -12,5 +12,6 @@
       descr: "{{ vrf_description }}"
       policy_control_preference: enforced
       policy_control_direction: ingress
+      validate_certs: false
       state: present
     delegate_to: localhost
