@@ -1,6 +1,6 @@
-- name: Clona DHCP Server
+- name: Clona DHCP
   hosts: localhost
-  tasks: 
+  tasks:
   - name: Create a virtual machine from a template
     community.vmware.vmware_guest:
       hostname: "{{ vcenter_hostname }}"
@@ -8,10 +8,10 @@
       use_ssl: true
       validate_certs: false
       password: "{{ vcenter_password }}"
-      folder: /Compute/Openshift
+      folder: "/Compute/Openshift"
       name: dhcp-server-1
       state: poweredon
-      template: DHCP-SERVER-OPENSHIFT
+      template: "DHCP-SERVER-OPENSHIFT"
       disk:
       - size_gb: 50
         type: thin
@@ -44,6 +44,5 @@
         dns_servers:
         - 192.168.1.1
         - 192.168.1.2
-      wait_for_ip_address: true
     delegate_to: localhost
     register: deploy
