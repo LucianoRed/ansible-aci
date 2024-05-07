@@ -1,0 +1,39 @@
+- name: Clona DHCP Server
+  tasks: 
+  - name: Create a virtual machine from a template
+    community.vmware.vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      folder: /Compute/Openshift
+      name: dhcp-server-1
+      state: poweredon
+      template: DHCP-SERVER-OPENSHIFT
+      disk:
+      - size_gb: 50
+        type: thin
+        datastore: "{{ vcenter_datastore }}"
+      hardware:
+        memory_mb: 4096
+        num_cpus: 2
+        num_cpu_cores_per_socket: 2
+        scsi: paravirtual
+        memory_reservation_lock: true
+        mem_limit: 8096
+        mem_reservation: 4096
+        cpu_shares_level: "high"
+        mem_shares_level: "high"
+        cpu_limit: 8096
+        cpu_reservation: 4096
+        max_connections: 5
+        hotadd_cpu: true
+        hotremove_cpu: true
+        hotadd_memory: false
+        version: 12 # Hardware version of virtual machine
+        boot_firmware: "efi"
+      networks:
+      - name: "{{ vmware_network }}"
+        mac: aa:bb:dd:aa:00:14
+      wait_for_ip_address: true
+    delegate_to: localhost
+    register: deploy
